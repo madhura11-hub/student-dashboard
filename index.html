@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <h2>Dashboard</h2>
+    <button onclick="showSection('dashboard')">Overview</button>
+    <button onclick="showSection('analytics')">Analytics</button>
+    <button onclick="toggleDark()">Dark Mode</button>
+    <button onclick="resetData()" class="danger">Reset Data</button>
+  </aside>
+
+  <main class="content">
+
+    <!-- DASHBOARD -->
+    <section id="dashboard">
+        
+      <h1>Student Attendance Dashboard</h1>
+
+      <div class="controls">
+        <input id="studentName" placeholder="Student name">
+        <select id="monthSelect">
+          <option value="">Month</option>
+          <option>January</option><option>February</option><option>March</option>
+          <option>April</option><option>May</option><option>June</option>
+          <option>July</option><option>August</option><option>September</option>
+          <option>October</option><option>November</option><option>December</option>
+        </select>
+        <button onclick="addStudent()">Add</button>
+      </div>
+
+      <div class="stats">
+
+  <div class="card">
+    <img src="images/student.png" class="stat-icon" alt="Students">
+    <p>Total Students</p>
+    <h2 id="total">0</h2>
+  </div>
+
+  <div class="card">
+    <img src="images/attendance.png" class="stat-icon" alt="Attendance">
+    <p>Attendance %</p>
+    <h2 id="percent">0%</h2>
+  </div>
+
+</div>
+
+
+      <div class="progress-box">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <select id="filterMonth" onchange="render()">
+        <option value="">All Months</option>
+        <option>January</option><option>February</option><option>March</option>
+        <option>April</option><option>May</option><option>June</option>
+        <option>July</option><option>August</option><option>September</option>
+        <option>October</option><option>November</option><option>December</option>
+      </select>
+
+     <!-- Empty State -->
+<div id="emptyState" class="empty-state hidden">
+  <img src="images/empty.png" alt="No data">
+  <p>No students added yet</p>
+</div>
+
+<ul id="list"></ul>
+
+    </section>
+
+    <!-- ANALYTICS -->
+    <section id="analytics" class="hidden">
+      <h1>Attendance Analytics</h1>
+      <canvas id="chart" width="400" height="250"></canvas>
+      
+
+    </section>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

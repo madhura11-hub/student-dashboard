@@ -1,0 +1,206 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* BACKGROUND FIX */
+html, body {
+  min-height: 100%;
+  background: url("bg.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 230px;
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+}
+
+.sidebar button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.sidebar button:hover {
+  transform: translateY(-2px);
+  background: #1d4ed8;
+}
+
+.danger { background: #dc2626; }
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 30px;
+  animation: fade 0.6s ease;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+input, select, button {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Cards */
+.stats {
+  display: flex;
+  gap: 15px;
+}
+
+.card {
+  flex: 1;
+  background: rgba(255,255,255,0.9);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Progress */
+.progress-box {
+  margin: 20px 0;
+  background: #e5e7eb;
+  height: 12px;
+  border-radius: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  border-radius: 20px;
+  transition: width 0.6s ease;
+}
+
+/* List */
+ul { list-style: none; }
+
+li {
+  background: rgba(255,255,255,0.95);
+  padding: 14px;
+  margin-top: 10px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  animation: fade 0.4s ease;
+}
+
+.present { background: #16a34a; color: white; }
+.absent { background: #dc2626; color: white; }
+
+/* Utility */
+.hidden { display: none; }
+
+/* Dark Mode (SAFE – background preserved) */
+.dark .sidebar,
+.dark .card,
+.dark li {
+  background: rgba(15,23,42,0.9);
+  color: white;
+}
+.hero-img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
+.stat-icon {
+  width: 32px;
+  margin-bottom: 8px;
+  opacity: 0.85;
+}
+.analytics-img {
+  width: 100%;
+  max-width: 350px;
+  margin-top: 20px;
+  opacity: 0.9;
+}
+#dashboard {
+  position: relative;
+  z-index: 1;
+}
+
+/* Improved central dashboard background image */
+.center-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  background: url("images/center-bg.png") no-repeat center;
+  background-size: contain;
+  opacity: 0.06;          /* VERY IMPORTANT */
+  filter: grayscale(100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* Ensure content stays above image */
+#dashboard {
+  position: relative;
+  z-index: 1;
+}
+/* Premium micro-pattern with motion */
+body::after {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  background: url("images/micro-pattern.png") repeat;
+  background-size: 180px 180px;
+  opacity: 0.06;               /* visible but still subtle */
+  pointer-events: none;
+  z-index: 0;
+  animation: patternMove 60s linear infinite;
+  transform: scale(1.1);
+}
+
+/* Ensure app stays above pattern */
+.layout {
+  position: relative;
+  z-index: 1;
+}
+@keyframes patternMove {
+  from {
+    transform: translate(0, 0) scale(1.1);
+  }
+  to {
+    transform: translate(-200px, -200px) scale(1.1);
+  }
+}
+
+
